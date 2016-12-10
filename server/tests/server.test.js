@@ -15,7 +15,7 @@ const todos = [{
     completedAt: 333
 }];
 
-beforeEach((done) => { // runs before every test case
+beforeEach((done) => {// runs before every test case
     Todo.remove({}).then(() => {
         return Todo.insertMany(todos);
     }).then(() => done());
