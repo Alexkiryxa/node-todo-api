@@ -83,7 +83,7 @@ UserSchema.statics.findByToken = function(token) {
 UserSchema.pre('save', function(next) {//MONGOOSE MIDDLEWARE
     let user = this;
 
-    if ( user.isModified('password') ) {
+    if ( user.isModified('password') ) {//not to hash what already hashed when updating other information(email for example)
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(user.password, salt, (err, hash) => {
                 user.password = hash;
